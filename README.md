@@ -1,2 +1,2 @@
 # matignon-the-gathering
-Cards Gasha game based on french politics
+Cards Gacha game based on french politics
