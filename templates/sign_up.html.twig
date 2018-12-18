@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="assets/favicon.ico" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Matignon:TheGathering</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" type="text/css" media="screen" href="assets/style.css" />
+	<!-- <script src="main.js"></script> -->
+</head>
+
+<body>
+	<nav class="navbar">
+		<a class="logo" href="log_out_home.html"><img src="assets/logo.png"></a>
+		<a class="main-link" href="log_in.html">LOG IN</a>
+	</nav>
+
+	<section class="container">
+		<div class="form-container">
+			<p>Sign Up</p>
+			<form id="new_user" action="" accept-charset="UTF-8" method="post">
+				<div class="form-group">
+					<input placeholder="Username" autofocus="autofocus" class="form-control" type="text" name="user[username]" id="user_username">
+					<input placeholder="Email" class="form-control" type="email" value="" name="user[email]" id="user_email">
+					<input placeholder="Password" autocomplete="off" class="form-control" type="password" name="user[password]" id="user_password">
+					<input placeholder="Password Confirmation" autocomplete="off" class="form-control" type="password" name="user[password_confirmation]">
+				</div>
+				<button name="button" type="submit">SIGN UP</button>
+			</form>
+
+			<div class="form-footer form-footer_sign-up">
+				<a class="sub-link" href="log_in.html">LOG IN</a>
+			</div>
+		</div>
+	</section>
+</body>
+
+</html>
