@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Controller;
+namespace App\API;
 
 use App\Entity\Collection;
 use App\Entity\Politic;
@@ -26,6 +26,21 @@ class API {
         $politic->setRarity($rarity);
 
         $entityManager->persist($politic);
+
+        $entityManager->flush();
+    }
+
+    public function addNewUser($surname, $firstname, $email, $password)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $user = new User();
+        $user->setSurname($surname);
+        $user->setFirstname($firstname);
+        $user->setEmail($email);
+        $user->setPassword($password);
+
+        $entityManager->persist($user);
 
         $entityManager->flush();
     }

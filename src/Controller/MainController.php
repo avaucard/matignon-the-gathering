@@ -12,7 +12,7 @@ class MainController extends AbstractController
      */
     public function getLogOutHomePageView()
     {
-        return $this->render('main/index.html.twig', [
+        return $this->render('main/log_out_home.html.twig', [
             'controller_name' => 'MainController',
         ]);
     }
@@ -22,7 +22,7 @@ class MainController extends AbstractController
      */
     public function getSignUpPageView()
     {
-        return $this->render('main/index.html.twig', [
+        return $this->render('main/sign_up.html.twig', [
             'controller_name' => 'MainController',
         ]);
     }
@@ -32,7 +32,7 @@ class MainController extends AbstractController
      */
     public function getLogInPageView()
     {
-        return $this->render('main/index.html.twig', [
+        return $this->render('main/log_in.html.twig', [
             'controller_name' => 'MainController',
         ]);
     }
@@ -42,7 +42,7 @@ class MainController extends AbstractController
      */
     public function getLogInHomePageView()
     {
-        return $this->render('main/index.html.twig', [
+        return $this->render('main/log_in_home.html.twig', [
             'controller_name' => 'MainController',
         ]);
     }

@@ -53,6 +53,11 @@ class User
      */
     private $collections;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isAdmin;
+
     public function __construct()
     {
         $this->collections = new ArrayCollection();
@@ -162,6 +167,18 @@ class User
                 $collection->setUserid(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsAdmin(): ?bool
+    {
+        return $this->isAdmin;
+    }
+
+    public function setIsAdmin(?bool $isAdmin): self
+    {
+        $this->isAdmin = $isAdmin;
 
         return $this;
     }
