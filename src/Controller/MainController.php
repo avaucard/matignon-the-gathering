@@ -46,4 +46,24 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
         ]);
     }
+
+    /**
+     * @Route("/summon", name="SummonPage")
+     */
+    public function getSummonPageView()
+    {
+        return $this->render('main/summon.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
+
+    /**
+     * @Route("/collection", name="CollectionPage")
+     */
+    public function getCollectionPageView()
+    {
+        return $this->render('main/collection.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
 }

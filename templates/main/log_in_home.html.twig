@@ -14,8 +14,8 @@
 <body>
 	<nav class="navbar home">
 		<a class="logo" href="{{ path('LogOutHomePage') }}"><img src="assets/logo.png"></a>
-		<a class="main-link" href="summon.html">SUMMON</a>
-        <a class="main-link" href="collection.html">COLLECTION</a>
+		<a class="main-link" href="{{ path('SummonPage') }}">SUMMON</a>
+        <a class="main-link" href="{{ path('CollectionPage') }}">COLLECTION</a>
         <div class="profil">
             <p>
                 <strong>Jean-Jacques</strong><br>
@@ -28,7 +28,7 @@
 		<div class="container-home">
 			<div class="banner"><img src="assets/banner.png" draggable="false"></div>
 			<div class="home-buttons">
-				<a href="summon.html">SUMMON A NEW POLITICIAN</a>
+				<a href="{{ path('SummonPage') }}">SUMMON A NEW POLITICIAN</a>
 				<a href="">CLAIM 200BV</a>
 			</div>
 		</div>
