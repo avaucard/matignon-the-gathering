@@ -16,6 +16,7 @@ html, body {
     height: 48px;
     display: flex;
     position: fixed;
+    background-color: #fff;
     justify-content: flex-end;
     border-top: 2px solid #000;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -90,20 +91,71 @@ margin: auto;
 
 .home-buttons {
     padding: 10px 0;
-    margin: auto;
+    margin: 10px auto;
 }
 
-.container-home button {
+.container-home a {
     background-color: #fff;
     border: #000 2px solid;
     padding: 10px;
     border-radius: 5px;
     font-weight: bold;
     margin: auto;
+    color: #000;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-decoration: none;
 }
 
-.container-home button:hover {
+.container-home a:hover {
     border: #888 2px solid;
+}
+
+.container-summon a {
+    background-color: #fff;
+    border: #000 2px solid;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: auto;
+    color: #000;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-decoration: none;
+}
+
+.container-summon a:hover {
+    border: #888 2px solid;
+}
+
+.container-summon {
+    width: 250px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+
+}
+
+.summon {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0px 0px 5px 0px #656565;
+}
+
+.container-collection {
+    width: 887px;
+    height: 440px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    overflow-y: scroll;
+    box-shadow: inset 0px 0px 5px 0px #656565;
+}
+
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+    box-shadow: 0px 0px 5px 0px #656565;
 }
 
 @media screen and (max-width: 500px) {
