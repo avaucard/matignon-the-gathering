@@ -17,16 +17,7 @@ class MainController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/signup", name="SignUpPage")
-     */
-    public function getSignUpPageView()
-    {
-        return $this->render('main/sign_up.html.twig', [
-            'controller_name' => 'MainController',
-        ]);
-    }
-
+    
     /**
      * @Route("/login", name="LogInPage")
      */
