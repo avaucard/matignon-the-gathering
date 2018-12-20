@@ -54,7 +54,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $ballotsNumber;
+    private $ballotsNumber = 0;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)

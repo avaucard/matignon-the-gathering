@@ -3,13 +3,13 @@
 {% block body %}
 
 	<nav class="navbar home">
-		<a class="logo" href="{{ path('LogOutHomePage') }}"><img src="assets/logo.png"></a>
+		<a class="logo" href="{{ path('LogInHomePage') }}"><img src="assets/logo.png"></a>
 		<a class="main-link" href="{{ path('SummonPage') }}">SUMMON</a>
         <a class="main-link" href="{{ path('CollectionPage') }}">COLLECTION</a>
         <div class="profil">
             <p>
-                <strong>Jean-Jacques</strong><br>
-                Novice | 200BV
+                <strong>{{ user.getSurname() }} {{ user.getFirstname() }}</strong><br>
+                Novice | {{ user.getBallotsNumber() }} BV
             </p>
         </div>
 	</nav>

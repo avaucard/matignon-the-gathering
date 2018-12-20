@@ -8,8 +8,8 @@
         <a class="main-link" href="{{ path('CollectionPage') }}">COLLECTION</a>
         <div class="profil">
             <p>
-                <strong>Jean-Jacques</strong><br>
-                Novice | 200BV
+                <strong>{{ user.getSurname() }} {{ user.getFirstname() }}</strong><br>
+                Novice | {{ user.getBallotsNumber() }} BV
             </p>
         </div>
 	</nav>

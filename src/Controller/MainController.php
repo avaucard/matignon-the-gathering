@@ -16,7 +16,9 @@ class MainController extends AbstractController
      */
     public function getLogOutHomePageView()
     {
-        $viewData = [];
+        $viewData = [
+            'user' => $this->getUser() 
+        ];
         return $this->render('main/log_out_home.html.twig', $viewData);
     }
 
@@ -25,7 +27,9 @@ class MainController extends AbstractController
      */
     public function getLogInHomePageView()
     {
-        $viewData = [];
+        $viewData = [
+            'user' => $this->getUser() 
+        ];
         return $this->render('main/log_in_home.html.twig', $viewData);
     }
 
@@ -83,7 +87,9 @@ class MainController extends AbstractController
 
         $entityManager->flush();
         
-        $viewData = [];
+        $viewData = [
+            'user' => $this->getUser() 
+        ];
         return $this->render('main/summon.html.twig', $viewData);
     }
 
@@ -96,7 +102,10 @@ class MainController extends AbstractController
 
         $collection = $user->getCollections();
 
-        $viewData = ['collection' => $collection];
+        $viewData = [
+            'collection' => $collection,
+            'user' => $this->getUser()
+        ];
 
 
         return $this->render('main/collection.html.twig', $viewData);
