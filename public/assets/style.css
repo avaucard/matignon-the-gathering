@@ -131,13 +131,18 @@ margin: auto;
     display: flex;
     flex-wrap: wrap;
     margin: auto;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 
+.container-summon h1 {
+    width: 100%;
 }
 
 .summon {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    height: 400px;
     box-shadow: 0px 0px 5px 0px #656565;
 }
 
@@ -165,6 +170,14 @@ margin: auto;
     color: #fff;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: 4px 20px;
+}
+
+.card-name-summon {
+    width: 210px;
+    color: #fff;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 4px 20px;
+    position: absolute;
 }
 
 @media screen and (max-width: 500px) {

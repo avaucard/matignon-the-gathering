@@ -89,7 +89,8 @@ class MainController extends AbstractController
         $entityManager->flush();
         
         $viewData = [
-            'user' => $this->getUser() 
+            'user' => $this->getUser(),
+            'card' => $finalPolitic
         ];
         return $this->render('main/summon.html.twig', $viewData);
     }
