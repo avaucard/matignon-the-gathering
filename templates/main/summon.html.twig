@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html.twig' %}
 
-<head>
-	<meta charset="utf-8" />
-	<link rel="icon" href="assets/favicon.ico" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Matignon:TheGathering</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" type="text/css" media="screen" href="assets/style.css" />
-	<!-- <script src="main.js"></script> -->
-</head>
+{% block body %}
 
-<body>
 	<nav class="navbar home">
 		<a class="logo" href="{{ path('LogInHomePage') }}"><img src="assets/logo.png"></a>
 		<a class="main-link" href="{{ path('SummonPage') }}">SUMMON</a>
@@ -32,6 +22,4 @@
 			</div>
 		</div>
 	</section>
-</body>
-
-</html>
+{% endblock %}

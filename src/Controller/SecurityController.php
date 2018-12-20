@@ -49,4 +49,10 @@ class SecurityController extends AbstractController
             'controller_name' => 'MainController',
         ]);
     }
+
+    /**
+     * @Route("/logout", name="LogOutPage")
+     */
+    public function logout() {}
+
 }

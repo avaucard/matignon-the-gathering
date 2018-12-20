@@ -20,7 +20,13 @@ security:
 
             form_login:
                 login_path: LogInPage
+                default_target_path: LogInHomePage
+                failure_path: LogInPage
                 check_path: LogInPage
+
+            logout:
+                path: LogOutPage
+                target: LogOutHomePage
 
             # activate different ways to authenticate
 
@@ -33,5 +39,8 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/home, roles: ROLE_USER }
+        - { path: ^/logout, roles: ROLE_USER }
+        - { path: ^/summon, roles: ROLE_USER }
+        - { path: ^/collection, roles: ROLE_USER }
+        # - { path: ^/, allow_if: "is_anonymous()" }

@@ -17,17 +17,6 @@ class MainController extends AbstractController
         ]);
     }
 
-    
-    /**
-     * @Route("/login", name="LogInPage")
-     */
-    public function getLogInPageView()
-    {
-        return $this->render('main/log_in.html.twig', [
-            'controller_name' => 'MainController',
-        ]);
-    }
-
     /**
      * @Route("/home", name="LogInHomePage")
      */

@@ -1,31 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html.twig' %}
 
-<head>
-	<meta charset="utf-8" />
-	<link rel="icon" href="assets/favicon.ico" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Matignon:TheGathering</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" type="text/css" media="screen" href="assets/style.css" />
-	<!-- <script src="main.js"></script> -->
-</head>
+{% block body %}
 
-<body>
-	<nav class="navbar">
-		<a class="logo" href="{{ path('LogOutHomePage') }}"><img src="assets/logo.png"></a>
-		<a class="main-link" href="{{ path('SignUpPage') }}">SIGN UP</a>
-		<a class="sub-link" href="{{ path('LogInPage') }}">LOG IN</a>
-	</nav>
+<nav class="navbar">
+    <a class="logo" href="{{ path('LogOutHomePage') }}"><img src="assets/logo.png"></a>
+    <a class="main-link" href="{{ path('SignUpPage') }}">SIGN UP</a>
+    <a class="sub-link" href="{{ path('LogInPage') }}">LOG IN</a>
+</nav>
 
-	<section class="container">
-		<div class="title">
-			<img src="assets/banner.png" draggable="false">
-			<p>
-				Enter the magic world of french politics !
-			</p>
-		</div>
-	</section>
-</body>
-
-</html>
+<section class="container">
+	<div class="title">
+		<img src="assets/banner.png" draggable="false">
+		<p>
+			Enter the magic world of french politics !
+		</p>
+	</div>
+</section>
+{% endblock %}

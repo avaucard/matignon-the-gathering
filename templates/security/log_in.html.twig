@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="utf-8" />
-	<link rel="icon" href="assets/favicon.ico" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Matignon:TheGathering</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" type="text/css" media="screen" href="assets/style.css" />
-	<!-- <script src="main.js"></script> -->
-</head>
-
-<body>
+{% extends 'base.html.twig' %}
+{% block body %}
 	<nav class="navbar">
 		<a class="logo" href="{{ path('LogOutHomePage') }}"><img src="assets/logo.png"></a>
 		<a class="main-link" href="{{ path('SignUpPage') }}">SIGN UP</a>
@@ -20,10 +8,10 @@
 	<section class="container">
 		<div class="form-container">
 			<p>Log In</p>
-			<form id="new_user" action="" accept-charset="UTF-8" method="post">
+			<form action="{{ path('LogInPage') }}" accept-charset="UTF-8" method="post">
 				<div class="form-group">
-                    <input placeholder="Username or Email" autofocus="autofocus" class="form-control" type="text" value="" name="user[login]" id="user_login">
-                    <input placeholder="Password" autocomplete="off" class="form-control" type="password" name="user[password]" id="user_password">
+                    <input placeholder="Email" required autofocus="autofocus" class="form-control" type="text" name="_username">
+                    <input placeholder="Password" autocomplete="off" class="form-control" type="password" name="_password">
 				</div>
 				<button name="button" type="submit">LOG IN</button>
 			</form>
@@ -34,6 +22,4 @@
 			</div>
 		</div>
 	</section>
-</body>
-
-</html>
+{% endblock %}
