@@ -232,7 +232,7 @@ margin: auto;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-#new_user {
+.form-container form {
     margin: auto;
     display: flex;
     flex-wrap: wrap;
@@ -240,24 +240,21 @@ margin: auto;
     margin-bottom: 20px;
 }
 
-#new_user button {
+.form-container form button {
     width: 100%;
     background-color: #fff;
     border: #000 2px solid;
     padding: 10px;
     border-radius: 5px;
     font-weight: bold;
+    margin-top: 20px;
 }
 
-#new_user button:hover {
+.form-container form button:hover {
     border: #888 2px solid;
 }
 
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group input {
+.form-container form input {
     width: 230px;
     padding: 10px;
     margin-bottom: -1px;
