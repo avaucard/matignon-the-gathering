@@ -72,6 +72,10 @@ class User implements UserInterface
      */
     private $collections;
 
+    private $power;
+
+    private $rank = "Novice";
+
     public function __construct()
     {
         $this->collections = new ArrayCollection();
@@ -211,5 +215,49 @@ class User implements UserInterface
         }
 
         return $this;
+    }
+
+
+    //Calculate Power
+    public function getPower()
+    {
+        $power = 0;
+        $collections = $this->getCollections();
+
+        //Add Value of rarity of each card to power
+        foreach ($collections as $collection) {
+            $power += (int)$collection->getPoliticid()->getRarity();
+        }
+        return $power;
+    }
+
+
+    //Define Rank
+    public function getRank()
+    {
+        $power = $this->getPower();
+
+        //Check different ranks depending on power
+        if ($power < 15)
+        {
+            $rank = "Novice";
+        }  
+        else if ($power >= 15 && $power < 30)
+        {
+            $rank = "Confirmé";
+        }
+        else if ($power >= 30 && $power < 50)
+        {
+            $rank = "Expert Politique";
+        }
+        else if ($power >= 50 && $power < 100)
+        {
+            $rank = "Vice Président";
+        }
+        else if ($power >= 100)
+        {
+            $rank = "Président";
+        }
+        return $rank;
     }
 }

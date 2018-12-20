@@ -78,9 +78,10 @@ class MainController extends AbstractController
         $finalPolitic = $repo->find($summonedPolitic);
 
         //Add random picked politic in database
+        $user = $this->getUser();
         $entityManager = $this->getDoctrine()->getManager();
         $summon = new Collection();
-        $summon->setUserid($this->getUser());
+        $summon->setUserid($user);
         $summon->setPoliticid($finalPolitic);
 
         $entityManager->persist($summon);

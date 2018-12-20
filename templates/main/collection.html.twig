@@ -9,14 +9,14 @@
         <div class="profil">
             <p>
                 <strong>{{ user.getSurname() }} {{ user.getFirstname() }}</strong><br>
-                Novice | {{ user.getBallotsNumber() }} BV
+                {{ user.getRank() }} | {{ user.getBallotsNumber() }} BV
             </p>
         </div>
 	</nav>
 
 	<section class="container">
 		<div class="container-collection">
-			{% for card in collection %}
+			{% for card in collection|reverse %}
 				<div class="card" style="background-image: url(assets/img/{{ card.politicid.getImage() }})">
 					{% if card.politicid.getRarity() == 1 %}
 						<div style="background-image: url(assets/bronze_card.png); display: flex;">
