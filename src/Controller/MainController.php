@@ -92,22 +92,11 @@ class MainController extends AbstractController
      */
     public function getCollectionPageView()
     {
-        $api = new API();
-        $user = $api->getCurrentUser($this->getUser());
+        $user = $this->getUser();
 
-        $repo = $this->getDoctrine()->getRepository(Collection::class);
-        $collection = $repo->findBy(
-            ['userid' => $this->getUser()]
-        );
+        $collection = $user->getCollections();
 
-        $collectionArray = [];
-
-        foreach ($collection as $singlePolitic) {
-            array_push($collectionArray, [$singlePolitic->getId(), $singlePolitic->getName(), $singlePolitic->getImage()]);
-        }
-                            
-        $collection->getPolitic()->getImage();
-        $viewData = ['collection' => $collectionArray];
+        $viewData = ['collection' => $collection];
 
 
         return $this->render('main/collection.html.twig', $viewData);

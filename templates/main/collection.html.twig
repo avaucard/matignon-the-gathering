@@ -2,13 +2,6 @@
 
 {% block body %}
 
-
-<ul>
-    {% for card in collection %}
-        <li>{{ collection.politicid|e }}</li>
-    {% endfor %}
-</ul>
-
 	<nav class="navbar home">
 		<a class="logo" href="{{ path('LogInHomePage') }}"><img src="assets/logo.png"></a>
 		<a class="main-link" href="{{ path('SummonPage') }}">SUMMON</a>
@@ -23,11 +16,21 @@
 
 	<section class="container">
 		<div class="container-collection">
-			<div class="card" style="background-image: url(assets/img/benoit_hamon.png)">
-				<div style="background-image: url(assets/gold_card.png); display: flex;">
-					<span class="card-name">Benoit Hamon</span>
+			{% for card in collection %}
+				<div class="card" style="background-image: url(assets/img/{{ card.politicid.getImage() }})">
+					{% if card.politicid.getRarity() == 1 %}
+						<div style="background-image: url(assets/bronze_card.png); display: flex;">
+					{% elseif card.politicid.getRarity() == 2 %}
+						<div style="background-image: url(assets/silver_card.png); display: flex;">
+					{% elseif card.politicid.getRarity() == 3 %}
+						<div style="background-image: url(assets/gold_card.png); display: flex;">
+					{% else %}
+						<div style="background-image: url(assets/bronze_card.png); display: flex;">
+					{% endif %}
+						<span class="card-name">{{ card.politicid.getName() }}</span>
+					</div>
 				</div>
-			</div>
+			{% endfor %}
 		</div>
 	</section>
 
