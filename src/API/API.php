@@ -5,16 +5,10 @@ namespace App\API;
 use App\Entity\Collection;
 use App\Entity\Politic;
 use App\Entity\User;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class API {
-    public function showCollection()
-    {
-        $repo = $this->getDoctrine()->getRepository(Collection::class);
-        $artists = $repo->findAll();
-        $viewData = ['artists' => $artists];
-        return $viewData;
-    }
-
+    
     public function addNewPolitic($name, $party, $image, $rarity)
     {
         $entityManager = $this->getDoctrine()->getManager();
@@ -44,5 +38,19 @@ class API {
 
         $entityManager->flush();
     }
+
+    public function getCurrentUser(User $user)
+    {
+        $userId = $user->getId();
+        
+        return $userId;
+    }
+
+    public function summonPolitic() 
+    {
+
+    }
+
+
 }
 ?>

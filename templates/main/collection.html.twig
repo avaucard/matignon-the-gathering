@@ -2,6 +2,13 @@
 
 {% block body %}
 
+
+<ul>
+    {% for card in collection %}
+        <li>{{ collection.politicid|e }}</li>
+    {% endfor %}
+</ul>
+
 	<nav class="navbar home">
 		<a class="logo" href="{{ path('LogInHomePage') }}"><img src="assets/logo.png"></a>
 		<a class="main-link" href="{{ path('SummonPage') }}">SUMMON</a>

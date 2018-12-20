@@ -17,7 +17,7 @@ class Collection
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\user", inversedBy="collections")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="collections")
      * @ORM\JoinColumn(nullable=false)
      */
     private $userid;
@@ -28,22 +28,17 @@ class Collection
      */
     private $politicid;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $quantity;
-
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUserid(): ?user
+    public function getUserid(): ?User
     {
         return $this->userid;
     }
 
-    public function setUserid(?user $userid): self
+    public function setUserid(?User $userid): self
     {
         $this->userid = $userid;
 
@@ -58,18 +53,6 @@ class Collection
     public function setPoliticid(?Politic $politicid): self
     {
         $this->politicid = $politicid;
-
-        return $this;
-    }
-
-    public function getQuantity(): ?int
-    {
-        return $this->quantity;
-    }
-
-    public function setQuantity(int $quantity): self
-    {
-        $this->quantity = $quantity;
 
         return $this;
     }

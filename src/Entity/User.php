@@ -61,20 +61,22 @@ class User implements UserInterface
      */
     private $lastClaim;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Collection", mappedBy="userid", orphanRemoval=true)
-     */
-    private $collections;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $isAdmin;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Collection", mappedBy="userid", orphanRemoval=true)
+     */
+    private $collections;
+
     public function __construct()
     {
         $this->collections = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -153,6 +155,33 @@ class User implements UserInterface
         return $this;
     }
 
+
+    public function getIsAdmin(): ?bool
+    {
+        return $this->isAdmin;
+    }
+
+    public function setIsAdmin(?bool $isAdmin): self
+    {
+        $this->isAdmin = $isAdmin;
+
+        return $this;
+    }
+
+
+    //Override UserInterface methods
+    public function eraseCredentials() {}
+
+    public function getSalt() {}
+
+    public function getRoles() {
+        return ['ROLE_USER'];
+    }
+
+    public function getUsername() {
+        return $this->email;
+    }
+
     /**
      * @return Collection|Collection[]
      */
@@ -182,31 +211,5 @@ class User implements UserInterface
         }
 
         return $this;
-    }
-
-    public function getIsAdmin(): ?bool
-    {
-        return $this->isAdmin;
-    }
-
-    public function setIsAdmin(?bool $isAdmin): self
-    {
-        $this->isAdmin = $isAdmin;
-
-        return $this;
-    }
-
-
-    //Override UserInterface methods
-    public function eraseCredentials() {}
-
-    public function getSalt() {}
-
-    public function getRoles() {
-        return ['ROLE_USER'];
-    }
-
-    public function getUsername() {
-        return $this->email;
     }
 }

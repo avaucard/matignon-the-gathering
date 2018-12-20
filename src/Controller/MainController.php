@@ -2,8 +2,12 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\API\API;
+use App\Entity\Politic;
+use App\Entity\Collection;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MainController extends AbstractController
 {
@@ -12,9 +16,8 @@ class MainController extends AbstractController
      */
     public function getLogOutHomePageView()
     {
-        return $this->render('main/log_out_home.html.twig', [
-            'controller_name' => 'MainController',
-        ]);
+        $viewData = [];
+        return $this->render('main/log_out_home.html.twig', $viewData);
     }
 
     /**
@@ -22,9 +25,8 @@ class MainController extends AbstractController
      */
     public function getLogInHomePageView()
     {
-        return $this->render('main/log_in_home.html.twig', [
-            'controller_name' => 'MainController',
-        ]);
+        $viewData = [];
+        return $this->render('main/log_in_home.html.twig', $viewData);
     }
 
     /**
@@ -32,9 +34,57 @@ class MainController extends AbstractController
      */
     public function getSummonPageView()
     {
-        return $this->render('main/summon.html.twig', [
-            'controller_name' => 'MainController',
-        ]);
+        //Create instance of API
+        $api = new API();
+
+        //Create Array to Random pick politics
+        $politicArray = [];
+
+        //Get Repository
+        $repo = $this->getDoctrine()->getRepository(Politic::class);
+        $politics = $repo->findAll();
+
+        //Put politics in array depending on rarity
+        foreach ($politics as $politic)
+        {
+            switch ($politic->getRarity()) {
+                case 1:
+                    for ($i=0; $i < 6; $i++) { 
+                        array_push($politicArray, $politic->getId());
+                    }
+                    break;
+                case 2:
+                    for ($i=0; $i < 3; $i++) { 
+                        array_push($politicArray, $politic->getId());
+                    }
+                    break;
+                case 3:
+                    for ($i=0; $i < 1; $i++) { 
+                        array_push($politicArray, $politic->getId());
+                    }
+                    break;
+            }
+        }
+
+        //Random pick in array
+        $summonedPolitic = $politicArray[rand(0,count($politicArray) - 1)];
+
+        //Get politicid matching with random pick
+        $repo = $this->getDoctrine()->getRepository(Politic::class);
+        $finalPolitic = $repo->find($summonedPolitic);
+
+        //Add random picked politic in database
+        $entityManager = $this->getDoctrine()->getManager();
+        $summon = new Collection();
+        $summon->setUserid($this->getUser());
+        $summon->setPoliticid($finalPolitic);
+
+        $entityManager->persist($summon);
+
+        $entityManager->flush();
+        
+        $viewData = [];
+        return $this->render('main/summon.html.twig', $viewData);
     }
 
     /**
@@ -42,8 +92,25 @@ class MainController extends AbstractController
      */
     public function getCollectionPageView()
     {
-        return $this->render('main/collection.html.twig', [
-            'controller_name' => 'MainController',
-        ]);
+        $api = new API();
+        $user = $api->getCurrentUser($this->getUser());
+
+        $repo = $this->getDoctrine()->getRepository(Collection::class);
+        $collection = $repo->findBy(
+            ['userid' => $this->getUser()]
+        );
+
+        $collectionArray = [];
+
+        foreach ($collection as $singlePolitic) {
+            array_push($collectionArray, [$singlePolitic->getId(), $singlePolitic->getName(), $singlePolitic->getImage()]);
+        }
+                            
+        $collection->getPolitic()->getImage();
+        $viewData = ['collection' => $collectionArray];
+
+
+        return $this->render('main/collection.html.twig', $viewData);
     }
+
 }
