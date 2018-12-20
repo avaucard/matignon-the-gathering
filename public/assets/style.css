@@ -158,6 +158,13 @@ margin: auto;
     box-shadow: 0px 0px 5px 0px #656565;
 }
 
+.card-name {
+    width: 210px;
+    color: #fff;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 4px 20px;
+}
+
 @media screen and (max-width: 500px) {
 
     .navbar {
