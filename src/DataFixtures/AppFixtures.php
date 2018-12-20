@@ -110,7 +110,7 @@ class AppFixtures extends Fixture
 
         /////////////////////////
         $politic = new Politic();
-        $politic->setName("Jean-Luc Mélenchon (Holo)")
+        $politic->setName("Jean-Luc Mélenchon")
                ->setParty("PC")
                ->setImage("hologramme_jlm.png")
                ->setRarity(3);
