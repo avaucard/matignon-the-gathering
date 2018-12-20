@@ -2951,16 +2951,16 @@
         },
         {
             "name": "symfony/maker-bundle",
-            "version": "v1.10.0",
+            "version": "v1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/maker-bundle.git",
-                "reference": "aa37ea1323ac888913bdd3e5f83d846798729449"
+                "reference": "584289df4c7781eaf2b0f9b785d93520a5d06b21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/aa37ea1323ac888913bdd3e5f83d846798729449",
-                "reference": "aa37ea1323ac888913bdd3e5f83d846798729449",
+                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/584289df4c7781eaf2b0f9b785d93520a5d06b21",
+                "reference": "584289df4c7781eaf2b0f9b785d93520a5d06b21",
                 "shasum": ""
             },
             "require": {
@@ -3013,7 +3013,7 @@
                 "scaffold",
                 "scaffolding"
             ],
-            "time": "2018-12-13T18:54:47+00:00"
+            "time": "2018-12-20T15:46:56+00:00"
         },
         {
             "name": "symfony/options-resolver",

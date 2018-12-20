@@ -277,3 +277,19 @@ margin: auto;
 .form-footer a:hover {
     color: #888;
 }
+
+footer {
+    width: 100%;
+    display: flex;
+    margin-top: -40px; 
+}
+
+footer a {
+    padding: 10px;
+    font-weight: bold;
+    margin: auto 0;
+    margin-left: auto;
+    color: #888;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-decoration: none;
+}
