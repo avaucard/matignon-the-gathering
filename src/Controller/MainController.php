@@ -16,6 +16,12 @@ class MainController extends AbstractController
      */
     public function getLogOutHomePageView()
     {
+        $user = $this->getUser();
+
+        if ($user != null) {
+            return $this->redirectToRoute('LogInHomePage');
+        }
+
         $viewData = [
             'user' => $this->getUser() 
         ];
@@ -84,9 +90,15 @@ class MainController extends AbstractController
         $summon->setUserid($user);
         $summon->setPoliticid($finalPolitic);
 
+        //Remove 200 BV from user account
+        $user->setBallotsNumber($user->getBallotsNumber() - 200);
+
+        $entityManager->persist($user);
         $entityManager->persist($summon);
 
         $entityManager->flush();
+
+        
         
         $viewData = [
             'user' => $this->getUser(),
@@ -111,6 +123,23 @@ class MainController extends AbstractController
 
 
         return $this->render('main/collection.html.twig', $viewData);
+    }
+
+    /**
+     * @Route("/claimbv", name="ClaimBV")
+     */
+    public function claimBV()
+    {
+        $user = $this->getUser();
+        $entityManager = $this->getDoctrine()->getManager();
+
+        //Remove 200 BV from user account
+        $user->setBallotsNumber($user->getBallotsNumber() + 200);
+
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('LogInHomePage');
     }
 
 }

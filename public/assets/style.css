@@ -106,8 +106,25 @@ margin: auto;
     text-decoration: none;
 }
 
+.container-home span {
+    background-color: #fff;
+    border: #000 2px solid;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: auto;
+    color: #000;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-decoration: none;
+}
+
+
 .container-home a:hover {
     border: #888 2px solid;
+}
+
+.container-home span.disabled {
+    cursor: not-allowed;
 }
 
 .container-summon a {

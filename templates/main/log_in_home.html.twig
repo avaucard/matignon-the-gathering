@@ -18,8 +18,12 @@
 		<div class="container-home">
 			<div class="banner"><img src="assets/banner.png" draggable="false"></div>
 			<div class="home-buttons">
-				<a href="{{ path('SummonPage') }}">SUMMON A NEW POLITICIAN</a>
-				<a href="">CLAIM 200BV</a>
+				{% if user.getBallotsNumber() <= 0 %}
+					<span class="disabled">YOU DON'T HAVE 200 BV</span>
+				{% else %}
+					<a href="{{ path('SummonPage') }}">SUMMON A NEW POLITICIAN</a>
+				{% endif %}
+				<a href="{{ path('ClaimBV') }}">CLAIM 200BV</a>
 			</div>
 		</div>
 	</section>
