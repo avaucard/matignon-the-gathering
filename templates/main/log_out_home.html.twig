@@ -14,6 +14,23 @@
 		<p>
 			Enter the magic world of french politics !
 		</p>
+
+		<table class="ranking">
+		<tr>
+			<th>Firstname</th>
+			<th>Surname</th>
+			<th>Power</th>
+		</tr>
+		{% for user in users %}
+		<tr>
+			<td>{{ user.getFirstname() }}</td>
+			<td>{{ user.getSurname() }}</td>
+			<td>{{ user.getPower() }}</td>
+		</tr>
+		{% endfor %}
+	</table> 
 	</div>
+
+	
 </section>
 {% endblock %}

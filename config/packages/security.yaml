@@ -43,4 +43,4 @@ security:
         - { path: ^/logout, roles: ROLE_USER }
         - { path: ^/summon, roles: ROLE_USER }
         - { path: ^/collection, roles: ROLE_USER }
-        # - { path: ^/, allow_if: "is_anonymous()" }
+        - { path: ^/admin, roles: ROLE_ADMIN }

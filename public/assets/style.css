@@ -68,11 +68,25 @@ html, body {
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .title {
     margin: auto;
 }
+
+.ranking {
+    margin-right: auto;
+    margin-left: auto;
+    height: auto;
+    width: 90%;
+}
+
+.ranking th,
+.ranking td {
+    border: 1px solid black;
+  }
 
 .container-home {
     margin: auto;
@@ -324,4 +338,52 @@ footer a {
     color: #888;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-decoration: none;
+}
+
+.privileges-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.privilege {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    background-color: #fff;
+    border: #000 2px solid;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.privilege:hover {
+    border: #888 2px solid;
+}
+
+.container-admin-privilege {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-admin-privilege form {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.choose-user {
+    width: 20%;
 }

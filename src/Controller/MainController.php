@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use DateTime;
-use App\API\API;
+use App\Entity\User;
 use App\Entity\Politic;
 use App\Entity\Collection;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,8 +23,12 @@ class MainController extends AbstractController
             return $this->redirectToRoute('LogInHomePage');
         }
 
+        //Get all users for Ranking
+        $repo = $this->getDoctrine()->getRepository(User::class);
+        $users = $repo->findAll();
+
         $viewData = [
-            'user' => $this->getUser() 
+            'users' => $users 
         ];
         return $this->render('main/log_out_home.html.twig', $viewData);
     }
@@ -45,8 +49,6 @@ class MainController extends AbstractController
      */
     public function getSummonPageView()
     {
-        //Create instance of API
-        $api = new API();
 
         //Create reference to User Repository
         $user = $this->getUser();

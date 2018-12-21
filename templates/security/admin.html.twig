@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
-
 {% block body %}
-
 	<nav class="navbar home">
 		<a class="logo" href="{{ path('LogInHomePage') }}"><img src="assets/logo.png"></a>
 		<!--Check access to Back-Office-->
@@ -23,26 +21,15 @@
 	</nav>
 
 	<section class="container">
-		<div class="container-collection">
-			{% for card in collection|reverse %}
-				<div class="card" style="background-image: url(assets/img/{{ card.politicid.getImage() }})">
-					{% if card.politicid.getRarity() == 1 %}
-						<div style="background-image: url(assets/bronze_card.png); display: flex;">
-					{% elseif card.politicid.getRarity() == 2 %}
-						<div style="background-image: url(assets/silver_card.png); display: flex;">
-					{% elseif card.politicid.getRarity() == 3 %}
-						<div style="background-image: url(assets/gold_card.png); display: flex;">
-					{% else %}
-						<div style="background-image: url(assets/bronze_card.png); display: flex;">
-					{% endif %}
-						<span class="card-name">{{ card.politicid.getName() }}</span>
-					</div>
-				</div>
-			{% endfor %}
-		</div>
+        <div class="privileges-wrapper">
+            <a href="{{ path('RemoveUser') }}" name="button" type="submit" class="privilege">REMOVE USER</a>
+            <a href="{{ path('GrantUser') }}" name="button" type="submit" class="privilege">GRANT USER</a>
+            <a href="{{ path('CleanCollection') }}" name="button" type="submit" class="privilege">CLEAN COLLECTION</a>
+            <a href="{{ path('AddBV') }}" name="button" type="submit" class="privilege">ADD BV</a>
+        </div>
 	</section>
 
-	<footer>
+    <footer>
 		<a href="{{ path('LogOutPage') }}">Log out</a>
 	</footer>
 {% endblock %}

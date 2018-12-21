@@ -55,7 +55,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $ballotsNumber = 0;
+    private $ballotsNumber = 600;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -76,6 +76,7 @@ class User implements UserInterface
     private $power;
 
     private $rank = "Novice";
+    
 
     public function __construct()
     {
@@ -180,7 +181,13 @@ class User implements UserInterface
     public function getSalt() {}
 
     public function getRoles() {
-        return ['ROLE_USER'];
+        
+        if ($this->getIsAdmin() == 1) {
+            return ['ROLE_ADMIN', 'ROLE_USER'];
+        }
+        else {
+            return ['ROLE_USER'];
+        }  
     }
 
     public function getUsername() {

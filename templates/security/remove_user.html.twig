@@ -1,9 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/style.css" />
+{% endblock %}
 
+{% block body %}
 	<nav class="navbar home">
-		<a class="logo" href="{{ path('LogInHomePage') }}"><img src="assets/logo.png"></a>
+		<a class="logo" href="{{ path('LogInHomePage') }}"><img src="../assets/logo.png"></a>
 		<!--Check access to Back-Office-->
 		{% if user.getIsAdmin() == true %}
 			<a class="main-link" href="{{ path('AdminPage') }}">BACK-OFFICE</a>
@@ -22,21 +25,18 @@
         </div>
 	</nav>
 
-	<section class="container">
-		<div class="container-home">
-			<div class="banner"><img src="assets/banner.png" draggable="false"></div>
-			<div class="home-buttons">
-				{% if user.getBallotsNumber() < 200 %}
-					<span class="disabled">YOU DON'T HAVE 200 BV</span>
-				{% else %}
-					<a href="{{ path('SummonPage') }}">SUMMON A NEW POLITICIAN</a>
-				{% endif %}
-				<a href="{{ path('ClaimBV') }}">CLAIM 200BV</a>
-			</div>
-		</div>
+	<section class="container-admin-privilege">
+        <form action="{{ path('RemoveUserMethod') }}" method="POST">
+            <select name="userToRemove" class="choose-user" id="users">
+                {% for user in users %}
+                    <option value="{{ user.getId() }}">{{ user.getFirstname() }} {{ user.getSurname() }}</option>
+                    <td></td>
+                {% endfor %}
+            </select>
+            <input type="submit" value="REMOVE"/>
+        </form>
 	</section>
-	
-	<footer>
+    <footer>
 		<a href="{{ path('LogOutPage') }}">Log out</a>
 	</footer>
 {% endblock %}
