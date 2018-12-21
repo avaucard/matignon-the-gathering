@@ -4,7 +4,9 @@
 
 	<nav class="navbar home">
 		<a class="logo" href="{{ path('LogInHomePage') }}"><img src="assets/logo.png"></a>
-		<a class="main-link" href="{{ path('SummonPage') }}">SUMMON</a>
+		{% if user.getBallotsNumber() >= 200 %}
+			<a class="main-link" href="{{ path('SummonPage') }}">SUMMON</a>
+		{% endif %}
         <a class="main-link" href="{{ path('CollectionPage') }}">COLLECTION</a>
         <div class="profil">
             <p>

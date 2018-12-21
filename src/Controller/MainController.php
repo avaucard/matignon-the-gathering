@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\API\API;
 use App\Entity\Politic;
 use App\Entity\Collection;
@@ -47,6 +48,14 @@ class MainController extends AbstractController
         //Create instance of API
         $api = new API();
 
+        //Create reference to User Repository
+        $user = $this->getUser();
+        $entityManager = $this->getDoctrine()->getManager();
+
+        if ($user->getBallotsNumber() < 200) {
+            return $this->redirectToRoute('LogInHomePage');
+        }
+
         //Create Array to Random pick politics
         $politicArray = [];
 
@@ -84,8 +93,6 @@ class MainController extends AbstractController
         $finalPolitic = $repo->find($summonedPolitic);
 
         //Add random picked politic in database
-        $user = $this->getUser();
-        $entityManager = $this->getDoctrine()->getManager();
         $summon = new Collection();
         $summon->setUserid($user);
         $summon->setPoliticid($finalPolitic);
@@ -133,11 +140,35 @@ class MainController extends AbstractController
         $user = $this->getUser();
         $entityManager = $this->getDoctrine()->getManager();
 
-        //Remove 200 BV from user account
-        $user->setBallotsNumber($user->getBallotsNumber() + 200);
+        if ($user->getLastClaim() != null) {
+            $userLastClaim = $user->getLastClaim();
+            $currentTime = new DateTime();
 
-        $entityManager->persist($user);
-        $entityManager->flush();
+            //test if there is 5 minutes between lastClaim and now
+            $diffDate = $currentTime->getTimestamp() - $userLastClaim->getTimestamp();
+            if ($diffDate >= 300 ) {
+                //Update Last Claim, value
+                $user->setLastClaim(new \DateTime());
+
+                //Add 200 BV to user account
+                $user->setBallotsNumber($user->getBallotsNumber() + 200);
+
+                $entityManager->persist($user);
+                $entityManager->flush();
+            }
+            else {
+                return $this->redirectToRoute('LogInHomePage');
+            }
+        }
+        else {
+            $user->setLastClaim(new \DateTime());
+            //Add 200 BV to user account
+            $user->setBallotsNumber($user->getBallotsNumber() + 200);
+
+            $entityManager->persist($user);
+            $entityManager->flush();
+        }
+        
 
         return $this->redirectToRoute('LogInHomePage');
     }

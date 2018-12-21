@@ -4,7 +4,9 @@
 
 	<nav class="navbar home">
 		<a class="logo" href="{{ path('LogInHomePage') }}"><img src="assets/logo.png"></a>
-		<a class="main-link" href="{{ path('SummonPage') }}">SUMMON</a>
+		{% if user.getBallotsNumber() >= 200 %}
+			<a class="main-link" href="{{ path('SummonPage') }}">SUMMON</a>
+		{% endif %}
         <a class="main-link" href="{{ path('CollectionPage') }}">COLLECTION</a>
         <div class="profil">
             <p>
@@ -18,7 +20,7 @@
 		<div class="container-home">
 			<div class="banner"><img src="assets/banner.png" draggable="false"></div>
 			<div class="home-buttons">
-				{% if user.getBallotsNumber() <= 0 %}
+				{% if user.getBallotsNumber() < 200 %}
 					<span class="disabled">YOU DON'T HAVE 200 BV</span>
 				{% else %}
 					<a href="{{ path('SummonPage') }}">SUMMON A NEW POLITICIAN</a>
